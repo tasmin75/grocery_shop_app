@@ -1,0 +1,13 @@
+.productList{
+    padding:0 3rem;
+    display: flex;
+    margin-top: 1rem;
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+}
+.productList::-webkit-scrollbar{
+    display: none;
+}
