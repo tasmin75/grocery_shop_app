@@ -4,7 +4,8 @@ import ProductCard from '../productCard/ProductCard'
 
 const Productlist = ({data}) => {
   return (
-    <div className={style.productList}>
+   <div className={style.container_list}>
+     <div className={style.productList}>
        {
             data.map((item)=>(
                 <ProductCard key={item.id} item={item}/>
@@ -12,6 +13,7 @@ const Productlist = ({data}) => {
        }
         
     </div>
+   </div>
   )
 }
 

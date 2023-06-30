@@ -77,7 +77,6 @@ const [mobileView, setMobileView]=useState(false)
           {mobileView? <ImCross /> : <FaBars />}
         </button>
       </div>
-      
     </div>
   );
 };

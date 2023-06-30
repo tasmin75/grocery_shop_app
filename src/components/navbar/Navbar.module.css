@@ -123,3 +123,9 @@
     font-size: 1.2rem;
   }
 }
+@media screen and (max-width: 400px) {
+  .navbar {
+   position:sticky;
+      top: 1.5rem;
+  }
+}
