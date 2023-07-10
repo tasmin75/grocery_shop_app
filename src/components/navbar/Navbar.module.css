@@ -4,7 +4,7 @@
   margin: 1rem;
   padding: 0rem 3rem;
   align-items: center;
-  background-color: #0d0a36;
+  background-color:black;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   position: sticky;
@@ -45,6 +45,7 @@
   font-size: 1.3rem;
   color: black;
   display: flex;
+  align-items: center;
   gap: 2rem;
 }
 
@@ -59,6 +60,22 @@
 }
 .responsive {
   display: none;
+}
+.cart_icons{
+  color:#fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.cart_icons span{
+  position: relative;
+  bottom: .5rem;
+  right: .4rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background-color: green;
+  padding: 0rem .3rem;
+  text-align: center;
+  border-radius: 50%;
 }
 
 
@@ -113,7 +130,7 @@
   }
   .user{
     font-size: 1rem;
-    gap:.5rem;
+    gap:.8rem;
   }
   .profile{
     width: 30px;
