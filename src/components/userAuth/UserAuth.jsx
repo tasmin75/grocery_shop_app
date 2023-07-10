@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
 const UserAuth = () => {
   return (
-    <div className="div">
-    </div>
-    
-  );
-};
+    <div>UserAuth</div>
+  )
+}
 
-export default UserAuth;
+export default UserAuth

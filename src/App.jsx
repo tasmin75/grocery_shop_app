@@ -10,6 +10,8 @@ import Product from './pages/product/Product'
 import ProductDetails from './pages/productDetails/ProductDetails'
 import Home from './pages/home/Home'
 import Footer from './components/footer/Footer'
+import Checkout from './pages/checkout/Checkout'
+import ProtectedRoutes from './components/userAuth/ProtectedRoutes'
 
 const App = () => {
   return (
@@ -21,6 +23,9 @@ const App = () => {
       <Route  path='/product' element={<Product/>}/>
       <Route  path='/product/:id' element={<ProductDetails/>}/>
       <Route  path='/cart' element={<Cart/>}/>
+      <Route path="/" element={<ProtectedRoutes/>}>
+      <Route  path='checkout' element={<Checkout/>}/>
+      </Route>
       <Route  path='/login' element={<Login/>}/>
       <Route  path='/signup' element={<Signup/>}/>
     </Routes>

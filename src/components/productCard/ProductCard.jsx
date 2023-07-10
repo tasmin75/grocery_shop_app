@@ -25,7 +25,7 @@ const ProductCard = ({item}) => {
 
   return (
     <div className={style.ProductCard} >
-        <motion.img src={item.imgUrl} alt="image" whileHover={{scale:0.9}} />
+       <Link to={`/product/${item.id}`}><motion.img src={item.imgUrl} alt="image" whileHover={{scale:0.9}} /></Link>
         <div className={style.card_details}>
             <Link to={`/product/${item.id}`}><h3>{item.productName}</h3></Link>
             <h5>({item.category})</h5>
