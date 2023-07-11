@@ -1,9 +1,10 @@
 import React from 'react'
-import {} from 'react-router-dom'
+import {Navigate, Outlet} from 'react-router-dom'
 
 const ProtectedRoutes = () => {
+  const isLogin =localStorage.getItem("logged")
   return (
-    <div>ProtectedRoutes</div>
+    isLogin? <Outlet/> : <Navigate to='/login'/>
   )
 }
 

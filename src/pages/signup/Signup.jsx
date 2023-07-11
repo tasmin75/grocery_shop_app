@@ -45,7 +45,7 @@ function Signup() {
   }
 
   function validatePassword(password){
-    const regex = /^(?=.*[a-z])(?=.*[A-Z]){8,}(?=.*[0-7])$/
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-7])/
     if(!regex.test(password)){
        return "Password must be min one Capital letter,min one digit & min 6 letter"
     }

@@ -5,18 +5,17 @@ import { motion } from "framer-motion";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
-import { MdProductionQuantityLimits, MdMiscellaneousServices } from "react-icons/md";
+import { MdProductionQuantityLimits } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [mobileView, setMobileView] = useState(false);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isLogin = localStorage.getItem('logged') 
-  const userdetails = JSON.parse(localStorage.getItem('users')) || [];
+  const isLogin = localStorage.getItem("logged");
+  const userdetails = JSON.parse(localStorage.getItem("users")) || [];
 
   const menuItems = [
     {
@@ -37,32 +36,36 @@ const Navbar = () => {
   ];
 
   function handleLogout() {
-    const isLoggedIn = userdetails.find(user => user.subscriptionData.isActive === true);
-   
+    const isLoggedIn = userdetails.find(
+      (user) => user.subscriptionData.isActive === true
+    );
+
     if (isLoggedIn) {
       isLoggedIn.subscriptionData.isActive = false;
-      localStorage.setItem('users', JSON.stringify(userdetails));
-      localStorage.removeItem('logged');
-      navigate('/login');
+      localStorage.setItem("users", JSON.stringify(userdetails));
+      localStorage.removeItem("logged");
+      navigate("/login");
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   }
 
   return (
     <div className={style.navbar}>
-    <NavLink to='/'>
-    <div className={style.logo}>
-        <img
-          src="https://www.chowbus.com/services/service-type-grocery.png"
-          alt="logoImg"
-        />
-        <h1>Fresh Grocery</h1>
-      </div>
-    </NavLink>
-      
+      <NavLink to="/">
+        <div className={style.logo}>
+          <img
+            src="https://www.chowbus.com/services/service-type-grocery.png"
+            alt="logoImg"
+          />
+          <h1>Fresh Grocery</h1>
+        </div>
+      </NavLink>
 
-      <div className={mobileView ? style.responsive : style.nav_menu} onClick={() => setMobileView(false)}>
+      <div
+        className={mobileView ? style.responsive : style.nav_menu}
+        onClick={() => setMobileView(false)}
+      >
         {menuItems.map((item, index) => (
           <NavLink
             key={index}
@@ -84,7 +87,9 @@ const Navbar = () => {
         </div>
         {isLogin ? (
           <Link to="/login">
-            <p onClick={handleLogout}>Logout</p>
+            <button className={style.logout_btn} onClick={handleLogout}>
+              Logout
+            </button>
           </Link>
         ) : (
           <NavLink to="/login">
@@ -96,7 +101,10 @@ const Navbar = () => {
             />
           </NavLink>
         )}
-        <button className={style.hamburger} onClick={() => setMobileView(!mobileView)}>
+        <button
+          className={style.hamburger}
+          onClick={() => setMobileView(!mobileView)}
+        >
           {mobileView ? <ImCross /> : <FaBars />}
         </button>
       </div>
