@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import style from "./Navbar.module.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
@@ -8,12 +8,15 @@ import { FaHome } from "react-icons/fa";
 import { MdProductionQuantityLimits, MdMiscellaneousServices } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const Navbar = () => {
   const [mobileView, setMobileView] = useState(false);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const isLogin = localStorage.getItem('logged') 
+  const userdetails = JSON.parse(localStorage.getItem('users')) || [];
 
   const menuItems = [
     {
@@ -33,15 +36,31 @@ const Navbar = () => {
     },
   ];
 
+  function handleLogout() {
+    const isLoggedIn = userdetails.find(user => user.subscriptionData.isActive === true);
+   
+    if (isLoggedIn) {
+      isLoggedIn.subscriptionData.isActive = false;
+      localStorage.setItem('users', JSON.stringify(userdetails));
+      localStorage.removeItem('logged');
+      navigate('/login');
+    } else {
+      navigate('/login');
+    }
+  }
+
   return (
     <div className={style.navbar}>
-      <div className={style.logo}>
+    <NavLink to='/'>
+    <div className={style.logo}>
         <img
           src="https://www.chowbus.com/services/service-type-grocery.png"
           alt="logoImg"
         />
-        <h1>Blinkit</h1>
+        <h1>Fresh Grocery</h1>
       </div>
+    </NavLink>
+      
 
       <div className={mobileView ? style.responsive : style.nav_menu} onClick={() => setMobileView(false)}>
         {menuItems.map((item, index) => (
@@ -60,19 +79,23 @@ const Navbar = () => {
       </div>
       <div className={style.user}>
         <div className={style.cart_icons} onClick={() => navigate("/cart")}>
-          <TiShoppingCart/>
+          <TiShoppingCart />
           <span>{totalQuantity}</span>
         </div>
-
-        <NavLink to="/login">
-          <motion.img
-            whileTap={{ scale: 1.2 }}
-            className={style.profile}
-            src="https://www.freepngimg.com/thumb/facebook/62681-flat-icons-face-computer-design-avatar-icon.png"
-            alt="profile"
-          />
-        </NavLink>
-
+        {isLogin ? (
+          <Link to="/login">
+            <p onClick={handleLogout}>Logout</p>
+          </Link>
+        ) : (
+          <NavLink to="/login">
+            <motion.img
+              whileTap={{ scale: 1.2 }}
+              className={style.profile}
+              src="https://www.freepngimg.com/thumb/facebook/62681-flat-icons-face-computer-design-avatar-icon.png"
+              alt="profile"
+            />
+          </NavLink>
+        )}
         <button className={style.hamburger} onClick={() => setMobileView(!mobileView)}>
           {mobileView ? <ImCross /> : <FaBars />}
         </button>

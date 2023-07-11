@@ -11,6 +11,15 @@
   top: 1rem;
   z-index: 999;
 }
+.logo a{
+  text-decoration: none;
+}
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .logo img {
   width: 50px;
