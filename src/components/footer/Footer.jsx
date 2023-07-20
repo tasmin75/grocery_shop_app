@@ -11,6 +11,7 @@ const Footer = () => {
           <img src={veges} alt="veges" />
         </div>
         <div className={style.right}>
+
           <h1>Fresh Vegetables & Fruits at your doorstep</h1>
           <p>We deliver fresh vegetables & fruits at your doorstep.</p>
         </div>
@@ -18,7 +19,8 @@ const Footer = () => {
       <div className={style.footer}>
         <div className={style.footerin1}>
           <div className={style.f1}>
-            {/* <img src={logo} alt="logo" className={style.logo} /> */}
+            
+            <img src="https://www.chowbus.com/services/service-type-grocery.png" alt="logo" className={style.footer_logo} />
             <p>
               Fresh Grocery is a leading online grocery store in the USA. We
               are committed to providing the best quality products at the best

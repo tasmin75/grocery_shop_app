@@ -5,6 +5,12 @@
     color: red;
     margin-top: 2rem;
 }
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 .offer_section{
     background-color: rgb(7, 7, 67);

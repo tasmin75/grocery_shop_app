@@ -9,7 +9,7 @@ const CountdownTimer = () => {
 
   let interval;
   const CountDown = () => {
-    const destination = new Date("July 19, 2023").getTime();
+    const destination = new Date("September 25, 2023").getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
       const diff = destination - now;

@@ -58,13 +58,16 @@ const Home = () => {
           Fresh Vegetable
           <hr />
         </h1>
+
         <div className={style.product_container}>
           <Productlist data={vegitable} />
         </div>
       </div>
       <div className={style.offer_section}>
         <div className={style.timer}>
-        <h1>Limited-time offer - <span>Hurry up!</span></h1>
+          <h1>
+            Limited-time offer - <span>Hurry up!</span>
+          </h1>
           <CountdownTimer />
         </div>
         <div className={style.timer_img}>
